@@ -5,28 +5,22 @@
     BackgroundColor="White"
     x:Class="MemoryLeakEverywhere.Views.CollectionViewSamplePage"
     Title="CollectionViewSamplePage"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     x:Name="_CollectionViewSamplePage">
     <VerticalStackLayout>
-        <CarouselView MaximumHeightRequest="200"
-            ItemsSource="{Binding Categories}"
-            VerticalOptions="Fill"
-            HorizontalOptions="Fill">
-            <CarouselView.ItemTemplate>
-                <DataTemplate>
-                    <Button
-                        Text="{Binding Name}"
-                        Command="{Binding Path=BindingContext.ChangeCategoryCommand, Source={x:Reference _CollectionViewSamplePage}}"
-                        FontSize="20"
-                        TextColor="Black"/>
-                </DataTemplate>
-            </CarouselView.ItemTemplate>
-        </CarouselView>
-        
-        <CollectionView
-            ItemsSource="{Binding RandomItems}"
-            VerticalOptions="Fill"
-            HorizontalOptions="Fill">
-            <CollectionView.ItemTemplate>
+        <syncfusion:SfListView
+                    IsScrollingEnabled="True"
+                    CanMaintainScrollPosition="False"
+                    SelectionMode="None"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    ScrollBarVisibility="Never"
+                    AutoFitMode="DynamicHeight"
+                    CachingStrategy="RecycleTemplate"
+                    ItemsSourceChangeCachingStrategy="RecycleItems" 
+                    Orientation="Horizontal"
+                    ItemsSource="{Binding RandomItems}">
+            <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
                     <Grid
                         RowDefinitions="Auto,Auto,Auto,Auto"
@@ -100,7 +94,7 @@
                             LineBreakMode="MiddleTruncation"/>
                     </Grid>
                 </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
     </VerticalStackLayout>
 </ContentPage>
